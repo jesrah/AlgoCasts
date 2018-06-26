@@ -8,6 +8,30 @@
 // chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
-function chunk(array, size) {}
+function chunk(array, size) {
+	const outer = [];
+	let count = 0;
+	while (count < array.length) {
+		outer.push(array.slice(count, count + size));
+		count+= size;
+	} 
+	return outer;
+}
 
 module.exports = chunk;
+
+// function chunk(array, size) {
+// 	let outer = [];
+// 	for (let element of array) {
+// 		//if last element in last chunk doesn't exist or the size of the chunk is to capacity, then create a new chunk
+// 		//const last = outer[outer.length - 1]
+// 		if (!outer[outer.length - 1] || outer[outer.length - 1].length === size) {
+// 			outer.push([element]);
+// 		}
+// 		//otherwise if it's not at capacity, we can just add a new element
+// 		else {
+// 			outer[outer.length - 1].push(element);
+// 		}
+// 	}
+// 	return outer;
+// }
